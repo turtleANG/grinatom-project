@@ -1,0 +1,191 @@
+@font-face {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/SegoeUI.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Segoe UI";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../assets/fonts/SegoeUI-Bold.ttf") format("ttf");
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI";
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: inherit;
+}
+
+.main {
+  display: flex;
+  min-height: 100vh;
+}
+
+.menu {
+  background-color: #003274;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 7px 41px 12px;
+}
+.menu .menu__logo {
+  margin-bottom: 32px;
+}
+.menu .menu__item {
+  fill: none;
+  stroke: #cacdd5;
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+.menu .menu__item.menu__item-active, .menu .menu__item.menu__item:hover {
+  stroke: #ffffff;
+  background-color: #067bcb;
+}
+.menu .menu__item.menu__item:hover {
+  cursor: pointer;
+}
+
+.content {
+  background-color: #eff5ff;
+  padding: 28px;
+  flex-grow: 1;
+}
+
+.breadcrumb {
+  list-style: none;
+  margin-bottom: 8px;
+}
+.breadcrumb .breadcrumb__item {
+  color: #067bcb;
+  display: inline;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 130%;
+}
+.breadcrumb .breadcrumb__item:not(:first-child)::before {
+  content: ">";
+  color: #000000;
+  font-size: 12px;
+  font-weight: 400;
+}
+.breadcrumb .breadcrumb__item.breadcrumb__item-active {
+  color: #000000;
+  font-weight: 400;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 70px;
+  line-height: 150%;
+}
+
+.plan {
+  display: flex;
+}
+.plan .plan__item {
+  flex: 1 1;
+}
+.plan .plan__item:not(:first-child) {
+  padding-left: 18px;
+}
+.plan .plan__item:not(:first-child) .plan__point::after {
+  left: -50%;
+}
+.plan .plan__item:last-child .plan__point::after {
+  right: 75%;
+  width: auto;
+}
+.plan .plan__item .plan__point {
+  margin-bottom: 25px;
+  position: relative;
+}
+.plan .plan__item .plan__point::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 150%;
+  background: radial-gradient(circle, #cacdd5 70%, rgba(0, 212, 255, 0) 100%);
+  position: absolute;
+  top: 50%;
+  margin-top: -2px;
+  left: 0px;
+  z-index: 1;
+}
+.plan .plan__item .plan__point .point__circle {
+  width: 33px;
+  height: 33px;
+  border: 3px solid;
+  border-radius: 50%;
+  display: flex;
+  background: #eff5ff;
+  border-color: #cacdd5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
+.plan .plan__item .plan__point .point__circle::before {
+  content: "";
+  display: block;
+}
+.plan .plan__item.plan__item-done .point__circle::before, .plan .plan__item.plan__item-delay .point__circle::before {
+  background-image: url(../assets/image/done_icon.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+.plan .plan__item.plan__item-done .plan__point::after {
+  background: radial-gradient(circle, #067bcb 70%, rgba(0, 212, 255, 0) 100%);
+}
+.plan .plan__item.plan__item-done .point__circle {
+  background: #067bcb;
+  border-color: #067bcb;
+}
+.plan .plan__item.plan__item-delay .plan__point::after {
+  background: radial-gradient(circle, rgb(252, 195, 11) 70%, rgba(0, 212, 255, 0) 100%);
+  z-index: 5;
+}
+.plan .plan__item.plan__item-delay .point__circle {
+  background-color: #fcc30b;
+  border-color: #fcc30b;
+}
+.plan .plan__item.plan__item-check .plan__point::after {
+  background: radial-gradient(circle, #259789 70%, rgba(0, 212, 255, 0) 100%);
+  z-index: 5;
+}
+.plan .plan__item.plan__item-check .point__circle {
+  background: #eff5ff;
+  border-color: #259789;
+}
+.plan .plan__item.plan__item-check .point__circle::before {
+  border-radius: 50%;
+  background: #259789;
+  width: 13px;
+  height: 13px;
+}
+.plan .plan__item .plan__description .description__title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 140%;
+  margin-bottom: 8px;
+}
+.plan .plan__item .plan__description .description__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  font-size: 12px;
+  line-height: 130%;
+}

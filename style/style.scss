@@ -1,0 +1,233 @@
+@import "fonts";
+
+//colors
+$black: #000000;
+$white: #ffffff;
+$gray3: #cacdd5;
+$darkGray: #333333;
+$hightBlue: #067bcb;
+$darkBlue: #003274;
+$yellow: #fcc30b;
+$turquoise: #259789;
+
+$contentBackgroundColor: #eff5ff;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI";
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: inherit;
+}
+
+.main {
+  display: flex;
+  min-height: 100vh;
+}
+
+.menu {
+  background-color: $darkBlue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 7px 41px 12px;
+
+  .menu__logo {
+    margin-bottom: 32px;
+  }
+
+  .menu__item {
+    fill: none;
+    stroke: $gray3;
+    border-radius: 4px;
+    padding: 10px 20px;
+
+    &.menu__item-active,
+    &.menu__item:hover {
+      stroke: $white;
+      background-color: $hightBlue;
+    }
+
+    &.menu__item:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.content {
+  background-color: $contentBackgroundColor;
+  padding: 28px;
+  flex-grow: 1;
+}
+
+.breadcrumb {
+  list-style: none;
+  margin-bottom: 8px;
+
+  .breadcrumb__item {
+    color: $hightBlue;
+    display: inline;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 130%;
+
+    &:not(:first-child)::before {
+      content: ">";
+      color: $black;
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    &.breadcrumb__item-active {
+      color: $black;
+      font-weight: 400;
+    }
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 70px;
+  line-height: 150%;
+}
+
+.plan {
+  display: flex;
+
+  .plan__item {
+    flex: 1 1;
+
+    &:not(:first-child) {
+      padding-left: 18px;
+
+      .plan__point::after {
+        left: -50%;
+      }
+    }
+
+    &:last-child {
+      .plan__point::after {
+        right: 75%;
+        width: auto;
+      }
+    }
+
+    .plan__point {
+      margin-bottom: 25px;
+      position: relative;
+
+      &::after {
+        content: "";
+        display: block;
+        height: 3px;
+        width: 150%;
+        background: radial-gradient(circle, $gray3 70%, rgba(0, 212, 255, 0) 100%);
+        position: absolute;
+        top: 50%;
+        margin-top: -2px;
+        left: 0px;
+        z-index: 1;
+      }
+
+      .point__circle {
+        width: 33px;
+        height: 33px;
+        border: 3px solid;
+        border-radius: 50%;
+        display: flex;
+        background: $contentBackgroundColor;
+        border-color: $gray3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 10;
+
+        &::before {
+          content: "";
+          display: block;
+        }
+      }
+    }
+
+    &.plan__item-done,
+    &.plan__item-delay {
+      .point__circle {
+        &::before {
+          background: {
+            image: url(../assets/image/done_icon.svg);
+            position: center center;
+            repeat: no-repeat;
+          }
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    &.plan__item-done {
+      .plan__point::after {
+        background: radial-gradient(circle, $hightBlue 70%, rgba(0, 212, 255, 0) 100%);
+      }
+      .point__circle {
+        background: $hightBlue;
+        border-color: $hightBlue;
+      }
+    }
+
+    &.plan__item-delay {
+      .plan__point::after {
+        background: radial-gradient(circle, rgba(252, 195, 11, 1) 70%, rgba(0, 212, 255, 0) 100%);
+        z-index: 5;
+      }
+      .point__circle {
+        background-color: $yellow;
+        border-color: $yellow;
+      }
+    }
+
+    &.plan__item-check {
+      .plan__point::after {
+        background: radial-gradient(circle, $turquoise 70%, rgba(0, 212, 255, 0) 100%);
+        z-index: 5;
+      }
+      .point__circle {
+        background: $contentBackgroundColor;
+        border-color: $turquoise;
+
+        &::before {
+          border-radius: 50%;
+          background: $turquoise;
+          width: 13px;
+          height: 13px;
+        }
+      }
+    }
+
+    .plan__description {
+      .description__title {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 140%;
+        margin-bottom: 8px;
+      }
+
+      .description__text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        font-size: 12px;
+        line-height: 130%;
+      }
+    }
+  }
+}
